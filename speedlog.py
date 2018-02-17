@@ -1,5 +1,6 @@
 import speedtest
 import sqlite3
+from datetime import datetime
 
 db_filename = "speedtest.db"
 
@@ -38,7 +39,7 @@ def init_db():
         client_ispulavg REAL,
         client_loggedin INTEGER,
         client_country TEXT);
-        ''')
+    ''')
     db.commit()
 
 def insert_results(results):
@@ -106,7 +107,8 @@ def insert_results(results):
         results['client']['ispdlavg'],
         results['client']['ispulavg'],
         results['client']['loggedin'],
-        results['client']['country']))
+        results['client']['country'])
+    )
     db.commit()
 
 def test_speed():
