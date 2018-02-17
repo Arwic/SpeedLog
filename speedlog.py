@@ -2,7 +2,7 @@ import speedtest
 import sqlite3
 from datetime import datetime
 
-db_filename = "speedtest.db"
+db_filename = "speedresults.db"
 
 def init_db():
     db = sqlite3.connect(db_filename)

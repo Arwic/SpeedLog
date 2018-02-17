@@ -2,7 +2,7 @@ import plotly.graph_objs as graph_objs
 from plotly.offline import plot
 import sqlite3
 
-db_filename = "speedtest.db"
+db_filename = "speedresults.db"
 
 def plot_results(timestart, timeend):
     # connect to the db
