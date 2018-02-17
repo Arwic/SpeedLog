@@ -1,7 +1,5 @@
 import plotly.graph_objs as graph_objs
-from plotly.offline import download_plotlyjs, init_notebook_mode, plot, iplot
-
-from datetime import datetime
+from plotly.offline import plot
 import sqlite3
 
 db_filename = "speedtest.db"
