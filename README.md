@@ -9,4 +9,4 @@ Simple script to run internet speed tests using speedtest.net and store the resu
 
 ## Graphing your results
 
-1. Run `python3 graphresults.py`
+1. Run `python3 speedgraph.py`
