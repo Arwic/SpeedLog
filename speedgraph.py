@@ -60,7 +60,7 @@ def plot_results(timestart, timeend):
     plot(figure)
 
 def main():
-    plot_results("2010-02-17T15:16:38.525305Z", "2019-02-17T15:16:38.525305Z")
+    plot_results("0001-01-01T00:00:00.000000Z", "9999-01-01T00:00:00.000000Z")
 
 if __name__ == "__main__":
     main()
