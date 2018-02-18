@@ -1,6 +1,8 @@
 import plotly.graph_objs as graph_objs
 from plotly.offline import plot
 import sqlite3
+import dateutil.parser as dateparser
+from dateutil import tz
 
 db_filename = "speedresults.db"
 
@@ -15,14 +17,21 @@ def plot_results(timestart, timeend):
     ''', (timestart, timeend))
     results = cur.fetchall()
 
+    # time zones
+    tz_utc = tz.tzutc()
+    tz_local = tz.tzlocal()
+
     # create x and y data
     y_downloads = []
     y_uploads = []
     x_times = []
-    for result in results:
-        y_downloads.append(result[1])
-        y_uploads.append(result[2])
-        x_times.append(result[16])
+    for r in results:
+        y_downloads.append(r[1])
+        y_uploads.append(r[2])
+        ts_naive = dateparser.parse(r[16])
+        ts_utc = ts_naive.replace(tzinfo=tz_utc)
+        ts_local = ts_utc.astimezone(tz_local)
+        x_times.append(ts_local.strftime("%Y-%m-%dT%H:%M:%S"))
 
     # Create a trace
     trace_downloads = graph_objs.Scatter(
